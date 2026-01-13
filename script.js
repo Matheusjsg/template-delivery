@@ -28,6 +28,7 @@ function closePizzaModal() {
 
 function closeCart() {
   document.getElementById('cartModal').style.display = 'none';
+  document.body.style.overflow = 'auto'; // Destrava o scroll quando fecha
 }
 
 // Renderizar a lista na Sacola (Usa as classes do seu CSS)
@@ -61,8 +62,10 @@ function openCart() {
     });
     totalEl.innerText = `R$ ${total.toFixed(2)}`;
   }
-
+  document.body.style.overflow = 'hidden'; // Trava o scroll da página atrás do modal
   document.getElementById('cartModal').style.display = 'flex';
+
+
 }
 
 // ==============================

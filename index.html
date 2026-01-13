@@ -167,11 +167,16 @@
 
 <div class="modal" id="cartModal">
   <div class="modal-box">
+    
     <div class="modal-header">
       <h3><i class="fas fa-shopping-basket"></i> Minha Sacola</h3>
       <button class="close-modal" onclick="closeCart()">&times;</button>
     </div>
-    <div id="cartList" class="cart-items-container"></div>
+
+    <div id="cartList" class="cart-items-container">
+      <!-- Itens do carrinho serão adicionados aqui dinamicamente -->
+    </div>
+
     
     <div class="delivery-form">
       <h4>Dados de Entrega</h4>
@@ -193,13 +198,12 @@
   <div id="trocoContainer" style="display:none; margin-top:10px;">
     <input type="text" id="trocoValue" placeholder="Troco para quanto?">
   </div>
-</div>
+  </div>
 
-
-    <div class="cart-summary">
+  <div class="cart-summary">
       <div class="total-row">
-        <span>Total do Pedido:</span>
-        <strong id="cartTotal">R$ 0,00</strong>
+          <span>Total do Pedido:</span>
+          <strong id="cartTotal">R$ 0,00</strong>
       </div>
       <button class="whatsapp-btn" onclick="sendWhatsApp()">
         <i class="fab fa-whatsapp"></i> Enviar Pedido
@@ -207,7 +211,6 @@
     </div>
   </div>
 </div>
-
 
 
 <script src="script.js"></script>

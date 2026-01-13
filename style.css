@@ -230,6 +230,7 @@ footer {
   align-items: center;
   padding: 20px 0;
   border-bottom: 1px solid #eee;
+  overflow-y: auto;
 }
 
 .cart-item-info strong { display: block; font-size: 14px; }
@@ -271,15 +272,19 @@ footer {
   justify-content: center; 
   align-items: center; 
   z-index: 1000;
-  padding: 15px;
+  padding: 10px; /* Pequeno respiro nas bordas */
+  align-items: center; /* Centraliza verticalmente se o carrinho for pequeno */
 }
 
 .modal-box { 
   background: var(--white); 
+  overflow-y: auto; /* Permite rolar se o conteúdo for maior que a tela */
   width: 100%; 
   max-width: 450px; 
-  border-radius: 20px; 
-  overflow: hidden;
+  max-height: 90vh; /* O carrinho nunca ocupará mais que 90% da altura da tela */
+  border-radius: 20px;
+  display: flex; 
+  flex-direction: column; /* Organiza header, corpo e footer em coluna */
   animation: modalIn 0.3s ease-out;
 }
 
@@ -295,8 +300,15 @@ footer {
   justify-content: space-between; 
   align-items: center; 
 }
+  
+.modal-header, .cart-summary {
+  flex-shrink: 0; /* Impede que eles diminuam ou sumam no scroll */
+}
 
-.modal-body { padding: 20px; max-height: 50vh; overflow-y: auto; }
+.modal-body { 
+  padding: 20px; 
+  max-height: 50vh; 
+  overflow-y: auto; }
 
 /* AJUSTADO PARA ID # */
 #paymentMethod {
