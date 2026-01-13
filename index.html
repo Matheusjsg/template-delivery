@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BV Conveniência | Cardápio Gourmet</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+</head>
+<body>
+
+<header class="header">
+  <div class="header-overlay">
+    <div class="status-badge">Aberto</div>
+    <h1>BV Conveniência</h1>
+    <p><i class="fas fa-star"></i> 4.9 (500+ avaliações)</p>
+  </div>
+</header>
+
+<nav class="categories-nav">
+  <div class="categories-container">
+    <button onclick="scrollToCategory('destaques')">🔥 Destaques</button>
+    <button onclick="scrollToCategory('pizzas')">🍕 Pizzas</button>
+  <button onclick="scrollToCategory('salgados')">🥟 Salgados</button>
+  </div>
+</nav>
+
+<main class="container">
+  
+  <section id="destaques" class="section-destaques">
+   
+    <h3 class="section-title">Sugestões da Casa</h3>
+    <div class="destaques-grid">
+      <div class="destaque-card" onclick="addItem('Combo Whisky + Bivolt + 4 Gelinho', 74.90)">
+        <img src="img/combo-whisky.jpg" alt="Combo">
+        <div class="destaque-info">
+          <strong>Combo Whisky Promo</strong>
+          <span>R$ 74,90</span>
+        </div>
+      </div>
+
+
+
+
+      <div class="destaque-card" onclick="addItem('Combo Whisky + Bivolt + 4 Gelinho', 74.90)">
+        <img src="img/combo-vodka.jpg" alt="Combo">
+        <div class="destaque-info">
+          <strong>Combo Whisky Promo</strong>
+          <span>R$ 74,90</span>
+        </div>
+      </div>
+  
+  
+  
+
+  
+  
+    </section>
+
+  <section id="pizzas">
+    <h3 class="section-title">Pizzas Artesanais</h3>
+    
+    <div class="product-card">
+      <div class="product-img">
+        <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=300&q=80" alt="Pizza">
+      </div>
+      <div class="product-info">
+        <div class="product-header">
+          <strong>Pizza Média (6 fatias)</strong>
+          <span class="badge">Mais Vendida</span>
+        </div>
+        <p>Até 2 sabores à sua escolha com massa fermentada.</p>
+        <div class="product-footer">
+          <span class="price">R$ 45,00</span>
+          <button class="btn-add" onclick="openPizzaModal()"><i class="fas fa-plus"></i></button>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+
+  <section id="Salgados">
+    <h3 class="section-title">Salgados</h3>
+    
+    <div class="product-card">
+      <div class="product-img">
+        <img src="img/coxinha.jpg" alt="Coxinha">
+      </div>
+      <div class="product-info">
+        <strong>Coxinha</strong>
+        <p>Salgado frito com recheio de frango desfiado.</p>
+        <div class="product-footer">
+          <span class="price">R$ 5,00</span>
+          <button class="btn-add" onclick="addItem('Coxinha', 5)"><i class="fas fa-plus"></i></button>
+        </div>
+      </div>
+    </div>
+
+        <div class="product-card">
+      <div class="product-img">
+        <img src="img/enroladinho.jpg" alt="Enroladinho de Salsicha">
+      </div>
+      <div class="product-info">
+        <strong>Enroladinho de Salsicha</strong>
+        <p>Salgado assado com salsicha envolta em massa folhada.</p>
+        <div class="product-footer">
+          <span class="price">R$ 6,00</span>
+          <button class="btn-add" onclick="addItem('Enroladinho de Salsicha', 6)"><i class="fas fa-plus"></i></button>
+        </div>
+      </div>
+    </div>
+
+ 
+
+
+
+
+
+
+  <section id="Bebidas">
+    <h3 class="section-title">Bebidas</h3>
+    
+    <div class="product-card">
+      <div class="product-img">
+        <img src="img/coca-cola.jpg" alt="Coca-Cola 1L">
+      </div>
+      <div class="product-info">
+        <strong>Coca-Cola 1L</strong>
+        <p>Refrigerante 1L</p>
+        <div class="product-footer">
+          <span class="price">R$ 10,00</span>
+          <button class="btn-add" onclick="addItem('Coca-Cola 1L', 10)"><i class="fas fa-plus"></i></button>
+        </div>
+      </div>
+    </div>
+
+        <div class="product-card">
+      <div class="product-img">
+        <img src="img/pepsi.jpg" alt="Pepsi 1L">
+      </div>
+      <div class="product-info">
+        <strong>Pepsi 1L</strong>
+        <p>Refrigerante 1L</p>
+        <div class="product-footer">
+          <span class="price">R$ 10,00</span>
+          <button class="btn-add" onclick="addItem('Pepsi 1L', 10)"><i class="fas fa-plus"></i></button>
+        </div>
+      </div>
+    </div>
+ 
+  </section>
+
+</main>
+
+<footer>
+  <div class="cart-bar" onclick="openCart()">
+    <div class="cart-info">
+      <span id="cart-count">0</span>
+      <div class="cart-text">
+        <span>Ver sacola</span>
+        <small id="cart-total-footer">R$ 0,00</small>
+      </div>
+    </div>
+    <i class="fas fa-chevron-right"></i>
+  </div>
+</footer>
+
+<div class="modal" id="pizzaModal">
+  <div class="modal-box">
+    <div class="modal-header">
+      <h3><i class="fas fa-pizza-slice"></i> Montar Pizza Média</h3>
+      <button class="close-modal" onclick="closePizzaModal()">&times;</button>
+    </div>
+    
+<div class="selection-group">
+  <label for="flavor1">Primeiro Sabor</label>
+  <select id="flavor1">
+    <option value="Mussarela|38.00">Mussarela - R$ 38,00</option>
+    <option value="Calabresa|42.00">Calabresa - R$ 42,00</option>
+    <option value="Frango com Catupiry|45.00">Frango com Catupiry - R$ 45,00</option>
+    <option value="Portuguesa|48.00">Portuguesa - R$ 48,00</option>
+    <option value="Camarão|65.00">Camarão - R$ 65,00</option>
+  </select>
+</div>
+
+<div class="selection-group">
+  <label for="flavor2">Segundo Sabor (Opcional)</label>
+  <select id="flavor2">
+    <option value="">Apenas 1 sabor (Inteira)</option>
+    <option value="Mussarela|38.00">Mussarela - R$ 38,00</option>
+    <option value="Calabresa|42.00">Calabresa - R$ 42,00</option>
+    <option value="Frango com Catupiry|45.00">Frango com Catupiry - R$ 45,00</option>
+    <option value="Portuguesa|48.00">Portuguesa - R$ 48,00</option>
+    <option value="Camarão|65.00">Camarão - R$ 65,00</option>
+  </select>
+</div>
+
+    <div class="modal-footer">
+      <button class="confirm-btn" onclick="addPizza()">Adicionar</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="cartModal">
+  <div class="modal-box">
+    <div class="modal-header">
+      <h3><i class="fas fa-shopping-basket"></i> Minha Sacola</h3>
+      <button class="close-modal" onclick="closeCart()">&times;</button>
+    </div>
+    <div id="cartList" class="cart-items-container"></div>
+    
+    <div class="delivery-form">
+      <h4>Dados de Entrega</h4>
+      <input type="text" id="userName" placeholder="Nome completo">
+      <input type="text" id="userAddress" placeholder="Endereço, Número e Bairro">
+    </div>
+
+  
+    <div class="delivery-form">
+  <h4>Forma de Pagamento</h4>
+  <select id="paymentMethod" onchange="toggleTroco()">
+    <option value="" disabled selected>Selecione como deseja pagar...</option>
+
+    <option value="Cartão de Crédito/Débito">Cartão (Entregador leva a maquineta)</option>
+    <option value="Pix">Pix</option>
+    <option value="Dinheiro">Dinheiro</option>
+  </select>
+  
+  <div id="trocoContainer" style="display:none; margin-top:10px;">
+    <input type="text" id="trocoValue" placeholder="Troco para quanto?">
+  </div>
+</div>
+
+
+    <div class="cart-summary">
+      <div class="total-row">
+        <span>Total do Pedido:</span>
+        <strong id="cartTotal">R$ 0,00</strong>
+      </div>
+      <button class="whatsapp-btn" onclick="sendWhatsApp()">
+        <i class="fab fa-whatsapp"></i> Enviar Pedido
+      </button>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

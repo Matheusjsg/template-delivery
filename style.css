@@ -1,0 +1,348 @@
+/* =========================================
+   CONFIGURAÇÕES GERAIS E CORES
+   ========================================= */
+:root {
+  --primary: #FF4747;      /* Vermelho vibrante para botões */
+  --secondary: #25d366;    /* Verde WhatsApp */
+  --dark: #1a1a1a;         /* Texto principal */
+  --light-gray: #f8f9fa;   /* Fundo do site */
+  --white: #ffffff;
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --border-radius: 12px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+  background-color: var(--light-gray);
+  color: var(--dark);
+  line-height: 1.5;
+  padding-bottom: 100px; /* Espaço para o footer fixo */
+}
+
+/* =========================================
+   HEADER (TOPO DO SITE)
+   ========================================= */
+.header { 
+  background: url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1000&q=80');
+  background-size: cover;
+  background-position: center;
+  height: 200px;
+  position: relative;
+}
+
+.header-overlay {
+  background: linear-gradient(transparent, rgba(0,0,0,0.85));
+  height: 100%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  color: var(--white);
+}
+
+.header h1 { font-size: 24px; margin-bottom: 4px; }
+.header p { font-size: 14px; opacity: 0.9; }
+
+.status-badge { 
+  background: var(--secondary); 
+  color: white; 
+  width: fit-content; 
+  padding: 4px 12px; 
+  border-radius: 20px; 
+  font-size: 12px; 
+  font-weight: bold; 
+  margin-bottom: 8px;
+}
+
+/* =========================================
+   NAVEGAÇÃO DE CATEGORIAS (FIXA)
+   ========================================= */
+.categories-nav {
+  position: sticky;
+  top: 0;
+  background: var(--white);
+  z-index: 100;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.categories-container {
+  display: flex;
+  overflow-x: auto;
+  padding: 12px;
+  gap: 10px;
+  scrollbar-width: none; /* Firefox */
+}
+
+.categories-container::-webkit-scrollbar { display: none; } /* Chrome/Safari */
+
+.categories-container button {
+  border: 1px solid #eee;
+  background: #fdfdfd;
+  padding: 8px 18px;
+  border-radius: 25px;
+  white-space: nowrap;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.categories-container button:active {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+}
+
+/* =========================================
+   CONTEÚDO E CARDS DE PRODUTOS
+   ========================================= */
+.container { padding: 15px; max-width: 600px; margin: 0 auto; }
+
+.section-title { font-size: 18px; margin: 25px 0 15px; padding-left: 5px; }
+
+/* Sugestões Horizontais */
+.destaques-grid { 
+  display: flex; 
+  overflow-x: auto; 
+  gap: 15px; 
+  padding-bottom: 10px;
+  scrollbar-width: none;
+}
+
+.destaque-card { 
+  min-width: 160px; 
+  background: var(--white); 
+  border-radius: var(--border-radius); 
+  overflow: hidden; 
+  box-shadow: var(--shadow);
+  cursor: pointer;
+}
+
+.destaque-card img { width: 180px; height: 180px; object-fit: cover; }
+.destaque-info { padding: 10px; }
+.destaque-info strong { display: block; font-size: 14px; }
+.destaque-info span { color: var(--secondary); font-weight: bold; }
+
+/* Cards de Lista (Pizzas/Açaí) */
+.product-card {
+  background: var(--white);
+  border-radius: var(--border-radius);
+  display: flex;
+  padding: 12px;
+  margin-bottom: 15px;
+  box-shadow: var(--shadow);
+}
+
+.product-img img { 
+  width: 100px; 
+  height: 100px; 
+  border-radius: 8px; 
+  object-fit: cover; 
+}
+
+.product-info { 
+  flex: 1; 
+  padding-left: 15px; 
+  display: flex; 
+  flex-direction: column; 
+  justify-content: space-between; 
+}
+
+.product-header strong { font-size: 16px; color: var(--dark); }
+.badge { 
+  font-size: 10px; 
+  background: #fff3e0; 
+  color: #ff9800; 
+  padding: 2px 6px; 
+  border-radius: 4px; 
+  margin-left: 5px;
+}
+
+.product-info p { font-size: 13px; color: #666; margin: 5px 0; }
+
+.product-footer { display: flex; justify-content: space-between; align-items: center; }
+.price { color: var(--secondary); font-weight: 800; font-size: 17px; }
+
+.btn-add { 
+  background: var(--white); 
+  border: 1.5px solid var(--primary); 
+  color: var(--primary); 
+  width: 34px; 
+  height: 34px; 
+  border-radius: 10px; 
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.2s;
+}
+
+.btn-add:active { background: var(--primary); color: white; }
+
+/* =========================================
+   RODAPÉ (BARRA DE CARRINHO)
+   ========================================= */
+footer { 
+  position: fixed; 
+  bottom: 0; 
+  width: 100%; 
+  padding: 15px; 
+  background: linear-gradient(to top, white 80%, transparent);
+  z-index: 99;
+}
+
+.cart-bar { 
+  background: var(--primary); 
+  color: white; 
+  border-radius: 15px; 
+  padding: 14px 20px;
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  box-shadow: 0 8px 25px rgba(255, 71, 71, 0.4);
+  cursor: pointer;
+  max-width: 570px;
+  margin: 0 auto;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.cart-item-info strong {
+  display: block;
+  font-size: 14px;
+}
+
+.cart-item-info span {
+  font-size: 12px;
+  color: #25d366;
+  font-weight: bold;
+}
+
+.cart-item-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-qty {
+  background: #f0f0f0;
+  border: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.qty-num {
+  font-weight: bold;
+  font-size: 14px;
+  min-width: 20px;
+  text-align: center;
+}
+
+.cart-item-subtotal {
+  font-weight: bold;
+  font-size: 14px;
+  margin-left: 10px;
+  min-width: 70px;
+  text-align: right;
+}
+
+
+.cart-count { 
+  background: rgba(255,255,255,0.25); 
+  width: 26px; height: 26px; 
+  display: grid; place-items: center; 
+  border-radius: 8px; font-weight: bold; 
+}
+
+.paymentMethod {
+  width: 100%;
+  padding: 12px;
+  border: 1.5px solid #eee;
+  border-radius: 10px;
+  background: #f9f9f9;
+  font-size: 15px;
+  margin-bottom: 5px;
+  cursor: pointer;
+}
+
+
+.cart-text span { font-weight: bold; display: block; font-size: 15px; }
+.cart-text small { opacity: 0.9; font-size: 12px; }
+
+/* =========================================
+   MODAIS (PIZZA E CARRINHO)
+   ========================================= */
+.modal { 
+  display: none; 
+  position: fixed; 
+  inset: 0; 
+  background: rgba(0,0,0,0.7); 
+  justify-content: center; 
+  align-items: center; 
+  z-index: 1000;
+  padding: 15px;
+}
+
+.modal-box { 
+  background: var(--white); 
+  width: 100%; 
+  max-width: 450px; 
+  border-radius: 20px; 
+  overflow: hidden;
+  animation: modalIn 0.3s ease-out;
+}
+
+@keyframes modalIn {
+  from { transform: translateY(50px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.modal-header { 
+  padding: 20px; 
+  border-bottom: 1px solid #eee; 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+}
+
+.modal-body { padding: 20px; max-height: 50vh; overflow-y: auto; }
+
+.selection-group { margin-bottom: 18px; }
+.selection-group label { display: block; font-weight: bold; font-size: 14px; margin-bottom: 8px; }
+.selection-group select { 
+  width: 100%; padding: 12px; border: 1.5px solid #eee; border-radius: 10px; background: #f9f9f9; font-size: 16px;
+}
+
+.delivery-form { padding: 20px; border-top: 1px solid #eee; background: #fcfcfc; }
+.delivery-form input { 
+  width: 100%; padding: 12px; margin-bottom: 10px; border: 1.5px solid #eee; border-radius: 10px; font-size: 15px;
+}
+
+.cart-summary { padding: 20px; border-top: 1px solid #eee; }
+.total-row { display: flex; justify-content: space-between; font-size: 19px; font-weight: bold; margin-bottom: 15px; }
+
+.confirm-btn { 
+  width: 100%; background: var(--primary); color: white; border: none; padding: 16px; font-weight: bold; font-size: 16px; cursor: pointer;
+}
+
+.whatsapp-btn { 
+  width: 100%; background: var(--secondary); color: white; border: none; padding: 16px; border-radius: 12px; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; font-size: 16px;
+}
