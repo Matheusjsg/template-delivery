@@ -21,14 +21,14 @@
   <div class="categories-container">
     <button onclick="scrollToCategory('destaques')">🔥 Destaques</button>
     <button onclick="scrollToCategory('pizzas')">🍕 Pizzas</button>
-  <button onclick="scrollToCategory('salgados')">🥟 Salgados</button>
+    <button onclick="scrollToCategory('salgados')">🥟 Salgados</button>
+    <button onclick="scrollToCategory('bebidas')">🥤 Bebidas</button>
   </div>
 </nav>
 
 <main class="container">
   
   <section id="destaques" class="section-destaques">
-   
     <h3 class="section-title">Sugestões da Casa</h3>
     <div class="destaques-grid">
       <div class="destaque-card" onclick="addItem('Combo Whisky + Bivolt + 4 Gelinho', 74.90)">
@@ -38,28 +38,18 @@
           <span>R$ 74,90</span>
         </div>
       </div>
-
-
-
-
-      <div class="destaque-card" onclick="addItem('Combo Whisky + Bivolt + 4 Gelinho', 74.90)">
+      <div class="destaque-card" onclick="addItem('Combo Vodka + Energético', 65.00)">
         <img src="img/combo-vodka.jpg" alt="Combo">
         <div class="destaque-info">
-          <strong>Combo Whisky Promo</strong>
-          <span>R$ 74,90</span>
+          <strong>Combo Vodka Promo</strong>
+          <span>R$ 65,00</span>
         </div>
       </div>
-  
-  
-  
-
-  
-  
-    </section>
+    </div>
+  </section>
 
   <section id="pizzas">
     <h3 class="section-title">Pizzas Artesanais</h3>
-    
     <div class="product-card">
       <div class="product-img">
         <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=300&q=80" alt="Pizza">
@@ -76,17 +66,12 @@
         </div>
       </div>
     </div>
-
   </section>
 
-
-  <section id="Salgados">
+  <section id="salgados">
     <h3 class="section-title">Salgados</h3>
-    
     <div class="product-card">
-      <div class="product-img">
-        <img src="img/coxinha.jpg" alt="Coxinha">
-      </div>
+      <div class="product-img"><img src="img/coxinha.jpg" alt="Coxinha"></div>
       <div class="product-info">
         <strong>Coxinha</strong>
         <p>Salgado frito com recheio de frango desfiado.</p>
@@ -96,59 +81,32 @@
         </div>
       </div>
     </div>
-
-        <div class="product-card">
-      <div class="product-img">
-        <img src="img/enroladinho.jpg" alt="Enroladinho de Salsicha">
-      </div>
+    <div class="product-card">
+      <div class="product-img"><img src="img/enroladinho.jpg" alt="Enroladinho"></div>
       <div class="product-info">
         <strong>Enroladinho de Salsicha</strong>
-        <p>Salgado assado com salsicha envolta em massa folhada.</p>
+        <p>Salgado assado com salsicha folhada.</p>
         <div class="product-footer">
           <span class="price">R$ 6,00</span>
           <button class="btn-add" onclick="addItem('Enroladinho de Salsicha', 6)"><i class="fas fa-plus"></i></button>
         </div>
       </div>
     </div>
+  </section>
 
- 
-
-
-
-
-
-
-  <section id="Bebidas">
+  <section id="bebidas">
     <h3 class="section-title">Bebidas</h3>
-    
     <div class="product-card">
-      <div class="product-img">
-        <img src="img/coca-cola.jpg" alt="Coca-Cola 1L">
-      </div>
+      <div class="product-img"><img src="img/coca-cola.jpg" alt="Coca-Cola"></div>
       <div class="product-info">
         <strong>Coca-Cola 1L</strong>
-        <p>Refrigerante 1L</p>
+        <p>Refrigerante gelado 1L</p>
         <div class="product-footer">
           <span class="price">R$ 10,00</span>
           <button class="btn-add" onclick="addItem('Coca-Cola 1L', 10)"><i class="fas fa-plus"></i></button>
         </div>
       </div>
     </div>
-
-        <div class="product-card">
-      <div class="product-img">
-        <img src="img/pepsi.jpg" alt="Pepsi 1L">
-      </div>
-      <div class="product-info">
-        <strong>Pepsi 1L</strong>
-        <p>Refrigerante 1L</p>
-        <div class="product-footer">
-          <span class="price">R$ 10,00</span>
-          <button class="btn-add" onclick="addItem('Pepsi 1L', 10)"><i class="fas fa-plus"></i></button>
-        </div>
-      </div>
-    </div>
- 
   </section>
 
 </main>
