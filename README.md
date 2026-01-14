@@ -1,4 +1,4 @@
-# 🍕 BV Conveniência - Cardápio Digital
+# 🍕 - Cardápio Digital
 
 Este é um sistema de **Cardápio Digital Interativo** desenvolvido para otimizar o atendimento de estabelecimentos de delivery via WhatsApp. O projeto simula a experiência de um aplicativo nativo (App), oferecendo rapidez, facilidade de uso e uma interface moderna e responsiva.
 
