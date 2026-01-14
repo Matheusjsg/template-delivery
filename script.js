@@ -16,6 +16,54 @@ function scrollToCategory(id) {
 }
 
 // ==============================
+// HÓRARIO DE FUNCIONAMENTO
+// ==============================
+
+const configLoja = {
+  abertura: 18, 
+  fechamento: 23,
+  diasAbertos: [0, 1, 2, 3, 4, 5, 6] // 0 é domingo, 6 é sábado
+};
+
+function isLojaAberta() {
+  const agora = new Date();
+  const hora = agora.getHours();
+  const dia = agora.getDay();
+
+  // Verifica se o dia atual está na lista de dias permitidos
+  if (!configLoja.diasAbertos.includes(dia)) return false;
+
+  // Lógica para horários que cruzam a meia-noite (ex: 18h às 02h)
+ // if (configLoja.fechamento < configLoja.abertura) {
+ // return hora >= configLoja.abertura || hora < configLoja.fechamento;
+ //}
+
+  // Lógica para horários no mesmo dia (ex: 08h às 18h)
+  return hora >= configLoja.abertura && hora < configLoja.fechamento;
+}
+
+function atualizarStatusLoja() {
+  const statusBadge = document.querySelector('.status-badge');
+  const btnEnviar = document.querySelector('.whatsapp-btn');
+  const aberta = isLojaAberta();
+
+  if (aberta) {
+    statusBadge.innerText = "Aberto";
+    statusBadge.style.backgroundColor = "var(--secondary)"; // Verde
+    if(btnEnviar) btnEnviar.disabled = false;
+  } else {
+    statusBadge.innerText = "Fechado";
+    statusBadge.style.backgroundColor = "#cf2929ca"; // Cinza
+    if(btnEnviar) {
+      btnEnviar.disabled = true;
+      btnEnviar.innerText = "Loja Fechada no Momento";
+      btnEnviar.style.backgroundColor = "#ccc";
+    }
+  }
+}
+
+
+// ==============================
 // GESTÃO DOS MODAIS
 // ==============================
 function openPizzaModal() {
@@ -208,4 +256,5 @@ function sendWhatsApp() {
 // ==============================
 window.onload = function() {
     updateUI();
+    atualizarStatusLoja();
 };
