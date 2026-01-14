@@ -180,6 +180,17 @@ function updateUI() {
   const count = cart.reduce((sum, item) => sum + item.quantity, 0);
   const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
 
+  // Captura a taxa de entrega selecionada
+  const deliverySelect = document.getElementById('deliveryRegion');
+  const deliveryTax = deliverySelect ? parseFloat(deliverySelect.value) || 0 : 0;
+  const totalGeral = total + deliveryTax;
+
+  // Se o modal estiver aberto, atualiza o resumo
+  const cartTotalEl = document.getElementById('cartTotal');
+  if (cartTotalEl) {
+    cartTotalEl.innerText = `R$ ${totalGeral.toFixed(2)}`;
+  }
+
   document.getElementById('cart-count').innerText = count;
   document.getElementById('cart-total-footer').innerText = `R$ ${total.toFixed(2)}`;
   
@@ -201,12 +212,18 @@ function sendWhatsApp() {
   const address = document.getElementById('userAddress').value;
   const payment = document.getElementById('paymentMethod').value;
   const troco = document.getElementById('trocoValue').value;
-
+  const bairro = document.getElementById('deliveryRegion').value;
+ 
   if (!name || !address) {
-    alert("Por favor, preencha Nome e Endereço!");
+    alert("Por favor, preencha Nome e o Endereço");
     return;
   }
-  
+
+   if (bairro === "0") {
+    alert("Por favor, selecione um Bairro!");
+    return;
+  }
+
   if (payment === "") {
     alert("Por favor, selecione uma Forma de Pagamento!");
     return;
@@ -221,6 +238,7 @@ function sendWhatsApp() {
   texto += `------------------------------\n`;
   texto += `👤 *Cliente:* ${name}\n`;
   texto += `📍 *Endereço:* ${address}\n`;
+  texto += `🏘️ *Bairro:* ${bairro}\n`; // Adiciona o bairro no zap
   texto += `💳 *Pagamento:* ${payment}\n`;
   
   if (payment === "Dinheiro" && troco) {
@@ -230,6 +248,8 @@ function sendWhatsApp() {
   texto += `------------------------------\n\n`;
   texto += `*ITENS DO PEDIDO:*\n`;
 
+  
+
   let totalFinal = 0;
   cart.forEach(item => {
     texto += `• ${item.quantity}x ${item.name} (R$ ${(item.price * item.quantity).toFixed(2)})\n`;
@@ -237,7 +257,8 @@ function sendWhatsApp() {
   });
 
   texto += `\n------------------------------\n`;
-  texto += `💰 *TOTAL: R$ ${totalFinal.toFixed(2)}*\n`;
+  texto += `🛵 *Entrega:* R$ ${deliveryTax.toFixed(2)}\n`;
+  texto += `💰 *TOTAL COM ENTREGA: R$ ${totalFinal + deliveryTax.toFixed(2)}*\n`;
   texto += `------------------------------\n`;
   texto += `_Pedido enviado via Cardápio Digital_`;
 

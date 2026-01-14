@@ -322,6 +322,16 @@ footer {
   cursor: pointer;
 }
 
+#deliveryRegion {
+  width: 100%;
+  padding: 12px;
+  border: 1.5px solid #eee;
+  border-radius: 10px;
+  background: #f9f9f9;
+  font-size: 15px;
+  margin-bottom: 5px;
+  cursor: pointer;
+}
 
 .footer-credits {
   padding: 20px 100px;

@@ -179,25 +179,35 @@
 
     
     <div class="delivery-form">
+          
       <h4>Dados de Entrega</h4>
       <input type="text" id="userName" placeholder="Nome completo">
       <input type="text" id="userAddress" placeholder="Endereço, Número e Bairro">
+        
+      <select id="deliveryRegion" onchange="updateUI()">
+          <option value="0" disabled selected>Selecione seu bairro...</option>
+          <option value="5.00">Bairro Centro - R$ 5,00</option>
+          <option value="8.00">Bairro Jardim - R$ 8,00</option>
+          <option value="12.00">Bairro Industrial - R$ 12,00</option>
+          <option value="0.00">Retirada no Local - Grátis</option>
+      </select>
+    
     </div>
 
   
     <div class="delivery-form">
-  <h4>Forma de Pagamento</h4>
-  <select id="paymentMethod" onchange="toggleTroco()">
-    <option value="" disabled selected>Selecione como deseja pagar...</option>
-
-    <option value="Cartão de Crédito/Débito">Cartão (Entregador leva a maquineta)</option>
-    <option value="Pix">Pix</option>
-    <option value="Dinheiro">Dinheiro</option>
-  </select>
+        
+      <h4>Forma de Pagamento</h4>
+        <select id="paymentMethod" onchange="toggleTroco()">
+            <option value="" disabled selected>Selecione como deseja pagar...</option>
+            <option value="Cartão de Crédito/Débito">Cartão (Entregador leva a maquineta)</option>
+            <option value="Pix">Pix</option>
+            <option value="Dinheiro">Dinheiro</option>
+        </select>
   
-  <div id="trocoContainer" style="display:none; margin-top:10px;">
-    <input type="text" id="trocoValue" placeholder="Troco para quanto?">
-  </div>
+        <div id="trocoContainer" style="display:none; margin-top:10px;">
+          <input type="text" id="trocoValue" placeholder="Troco para quanto?">
+        </div>
   </div>
 
   <div class="cart-summary">
