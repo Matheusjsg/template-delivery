@@ -192,10 +192,11 @@ function updateUI() {
   }
 
   document.getElementById('cart-count').innerText = count;
-  document.getElementById('cart-total-footer').innerText = `R$ ${total.toFixed(2)}`;
+  document.getElementById('cart-total-footer').innerText = `R$ ${totalGeral.toFixed(2)}`;
   
   const footer = document.querySelector('footer');
   if(footer) footer.style.display = count > 0 ? 'block' : 'none';
+
 }
 
 function toggleTroco() {
@@ -203,6 +204,7 @@ function toggleTroco() {
   const trocoDiv = document.getElementById('trocoContainer');
   trocoDiv.style.display = (method === "Dinheiro") ? "block" : "none";
 }
+
 
 // ==============================
 // ENVIO WHATSAPP
@@ -212,14 +214,18 @@ function sendWhatsApp() {
   const address = document.getElementById('userAddress').value;
   const payment = document.getElementById('paymentMethod').value;
   const troco = document.getElementById('trocoValue').value;
-  const bairro = document.getElementById('deliveryRegion').value;
+  
+  // 1. Capturar o SELECT e o VALOR da taxa corretamente
+  const selectBairro = document.getElementById('deliveryRegion');
+  const deliveryTax = parseFloat(selectBairro.value) || 0;
+  const nomeBairro = selectBairro.options[selectBairro.selectedIndex].text;
  
   if (!name || !address) {
     alert("Por favor, preencha Nome e o Endereço");
     return;
   }
 
-   if (bairro === "0") {
+   if (selectBairro.value === "0") {
     alert("Por favor, selecione um Bairro!");
     return;
   }
@@ -238,7 +244,7 @@ function sendWhatsApp() {
   texto += `------------------------------\n`;
   texto += `👤 *Cliente:* ${name}\n`;
   texto += `📍 *Endereço:* ${address}\n`;
-  texto += `🏘️ *Bairro:* ${bairro}\n`; // Adiciona o bairro no zap
+  texto += `🏘️ *Bairro:* ${nomeBairro}\n`; // Adiciona o bairro no zap
   texto += `💳 *Pagamento:* ${payment}\n`;
   
   if (payment === "Dinheiro" && troco) {
@@ -249,21 +255,25 @@ function sendWhatsApp() {
   texto += `*ITENS DO PEDIDO:*\n`;
 
   
-
-  let totalFinal = 0;
+  let subtotal = 0;
   cart.forEach(item => {
     texto += `• ${item.quantity}x ${item.name} (R$ ${(item.price * item.quantity).toFixed(2)})\n`;
-    totalFinal += item.price * item.quantity;
+    subtotal += item.price * item.quantity;
   });
+
+  // CÁLCULO FINAL CORRETO
+  const totalGeral = subtotal + deliveryTax;
 
   texto += `\n------------------------------\n`;
   texto += `🛵 *Entrega:* R$ ${deliveryTax.toFixed(2)}\n`;
-  texto += `💰 *TOTAL COM ENTREGA: R$ ${totalFinal + deliveryTax.toFixed(2)}*\n`;
+  texto += `💰 *TOTAL COM ENTREGA: R$ ${totalGeral.toFixed(2)}*\n`;
   texto += `------------------------------\n`;
   texto += `_Pedido enviado via Cardápio Digital_`;
 
   const phone = "5571992471530";
   window.open(`https://wa.me/${phone}?text=${encodeURIComponent(texto)}`, '_blank');
+
+  
 
   // Limpeza após envio
   cart = [];
